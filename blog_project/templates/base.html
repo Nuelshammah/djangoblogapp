@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="{% static 'style.css' %}">
+    <!-- <title>Document</title> -->
+</head>
+<body>
+    <!-- [if 1t IE 7] -->
+         <!-- <P class=""></P> -->
+
+         <li>
+            <a href="{% url 'home' %}"> 
+                Django blog </a>
+         </li>
+
+         <div>
+            {% block content %}
+
+            {% endblock content%}
+        </div>
+   </body>
+</html>

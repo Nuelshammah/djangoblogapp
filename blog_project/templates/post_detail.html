@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="post-entry">
+    <h2>{{ post.title }}</h2>
+    <p>{{post.body}}</p>
+</div>
+
+<div>
+    <li><a href="{% url 'post_edit' post.pk %}"> + Edit Post</a></li>
+</div>
+<div>
+    <li><a href="{% url 'post_delete' post.pk %}"> Delete post</a></li>
+</div>
+
+<div>
+    <h3>Comment Section</h3>
+
+    <h3>View Comments</h3>
+    {% for comment in comments %}
+    <div class="comment">
+        <div class="comment-meta">
+            <strong>{{ comment.author}}</strong>
+            on 
+            {{ comment.content }}
+            {% timezone "Africa/lagos" %}
+            {{ comment.created_at }}
+            {% endtimezone %}
+        </div>
+        <p>{{ comment.content}}</p>
+    </div>
+    {% empty %}
+    <p> No Comments yet ...</p>
+    {% endfor %}
+<div>
+    <h3>Add a comment</h3>
+    <form action="" method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <button type = 'submit'>Add Comment</button>
+    </form>
+</div> 
+
+</div>
+
+{% endblock content %}
